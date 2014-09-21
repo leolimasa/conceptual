@@ -1,14 +1,27 @@
 package conceptual.bases;
+
 import conceptual.model.Concept;
 import conceptual.model.Linker;
 class SimpleLinker implements Linker {
 
+    /**
+    * A map of a concept class name and all the associated perspective class
+    * names.
+    **/
     var links : Map<String, Array<String>>;
 
+    public function new() {
+        links = new Map<String, Array<String>>();
+    }
+
     public function initialize(concept:Concept):Void {
-        concept.linker = this;
+        concept.set_linker(this);
         var class_name = Type.getClassName(Type.getClass(concept));
-        for (persp_class_name in links.get(class_name)) {
+        var perspective_names = links.get(class_name);
+        if (perspective_names == null) {
+            return;
+        }
+        for (persp_class_name in perspective_names) {
             var cls = Type.resolveClass(persp_class_name);
             var inst = Type.createInstance(cls, []);
             concept.add_perspective(inst);
@@ -29,9 +42,6 @@ class SimpleLinker implements Linker {
         if (concept_array == null) {
             return;
         }
-
-    }
-
-    public function new() {
+        concept_array.remove(perspective);
     }
 }

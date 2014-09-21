@@ -1,4 +1,5 @@
 package conceptual.bases;
+
 import conceptual.model.Concept;
 import conceptual.model.Linker;
 import conceptual.model.Perspective;
@@ -32,5 +33,9 @@ class SimplePerspective implements Perspective {
 
     public function broadcast(method_name:String, ?args:Array<Dynamic>):Void {
         concept.broadcast(method_name, args);
+    }
+
+    public function get_concept() : Concept {
+        return concept;
     }
 }

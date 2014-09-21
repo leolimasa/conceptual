@@ -1,4 +1,5 @@
 package conceptual.bases;
+
 import conceptual.model.Perspective;
 import conceptual.model.Concept;
 import conceptual.model.Linker;
@@ -81,10 +82,12 @@ class SimpleConcept implements Concept {
         return _linker;
     }
 
+    /**
+    * Sets the linker that is associated to this concept
+    **/
     public function set_linker(linker:Linker):Linker {
         _linker = linker;
         return linker;
     }
-
 
 }

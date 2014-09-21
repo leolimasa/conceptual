@@ -1,4 +1,5 @@
 package conceptual.model;
+
 interface Linkable {
     var linker(get, set):Linker;
 
