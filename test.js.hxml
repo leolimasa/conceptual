@@ -1,0 +1,8 @@
+-cp test
+-cp src
+-main ConceptualTest
+-lib buddy
+-lib mockatoo
+-lib mcover
+--macro mcover.MCover.coverage(['conceptual.bases','conceptual.model'],['src'])
+-js target/test.js
