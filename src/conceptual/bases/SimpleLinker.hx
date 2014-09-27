@@ -8,6 +8,7 @@ class SimpleLinker implements Linker {
     * A map of a concept class name and all the associated perspective class
     * names.
     **/
+
     var links : Map<String, Array<String>>;
 
     public function new() {
@@ -23,6 +24,9 @@ class SimpleLinker implements Linker {
         }
         for (persp_class_name in perspective_names) {
             var cls = Type.resolveClass(persp_class_name);
+            if (cls == null) {
+                throw "Could not find class: " + persp_class_name;
+            }
             var inst = Type.createInstance(cls, []);
             concept.add_perspective(inst);
         }
@@ -43,5 +47,11 @@ class SimpleLinker implements Linker {
             return;
         }
         concept_array.remove(perspective);
+    }
+
+    public function link_classes(cls1:Class<Dynamic>, cls2:Class<Dynamic>):Void {
+        var cls1_str = Type.getClassName(cls1);
+        var cls2_str = Type.getClassName(cls2);
+        link(cls1_str, cls2_str);
     }
 }

@@ -69,8 +69,12 @@ class SimpleConcept implements Concept {
         if (perspectives == null) {
             return;
         }
+        if (args == null) {
+            args = [];
+        }
         for (p in perspectives) {
-            Reflect.callMethod(p, Reflect.field(p, method_name), args);
+            var meth = Reflect.field(p, method_name);
+            Reflect.callMethod(p, meth, args);
         }
     }
 

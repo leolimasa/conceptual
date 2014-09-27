@@ -3,6 +3,4 @@
 -main ConceptualTest
 -lib buddy
 -lib mockatoo
--js target/test.js
--D nodejs
--cmd "node target/test.js"
+-java target/java

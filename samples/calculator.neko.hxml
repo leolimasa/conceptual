@@ -1,0 +1,4 @@
+-cp ../src
+-main calculator.Main
+-neko ../target/samples/calculator.n
+-cmd "neko ../target/samples/calculator.n"

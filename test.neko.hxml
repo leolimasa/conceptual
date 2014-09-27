@@ -6,4 +6,5 @@
 -lib mcover
 --macro mcover.MCover.coverage(['conceptual.bases','conceptual.model'],['src'])
 -neko target/test.n
+-D coverage
 -cmd "neko target/test.n"
